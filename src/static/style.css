@@ -1,0 +1,14 @@
+.btn-login {
+    background-color: #F4A460;
+    color: #F5F5DC;
+    border: none
+}
+.btn-login:hover {
+    background-color: #CD853F;
+}
+.border-none {
+    border: none
+}
+.login-title {
+    font-family: Playfair Display, sans-serif;
+}
