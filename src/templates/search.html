@@ -1,0 +1,15 @@
+{% extends 'core.html' %} {% block title %} Library {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="isbnInput" class="form-label">ISBN Code : </label>
+                    <input type="text" class="form-control" id="isbnInput" name="isbnInput" aria-describedby="isbnInfo">
+                    <div id="isbnInput" class="form-text">The ISBN Code is behind the books, with 10 or 13 characters</div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

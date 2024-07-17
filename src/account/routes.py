@@ -15,9 +15,8 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user:
             if user.check_password(password):
-                flash('Welcome {}'.format(user.username), category='success')
                 login_user(user, remember=True)
-                return redirect(url_for('library.home'))
+                return redirect(url_for('books.home'))
             else:
                 flash('Incorrect password', category='danger')
         else:

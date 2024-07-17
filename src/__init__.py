@@ -24,10 +24,10 @@ def create_app():
         return User.query.get(int(user_id))
 
     from account.routes import account_bp
-    from library.routes import library_bp
+    from books.routes import books_bp
 
     app.register_blueprint(account_bp, url_prefix="/")
-    app.register_blueprint(library_bp, url_prefix="/")
+    app.register_blueprint(books_bp, url_prefix="/")
     # create_db(app)
     return app
 
