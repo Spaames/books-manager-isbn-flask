@@ -11,5 +11,41 @@
                 </div>
             </form>
         </div>
+        {% if book != "" %}
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-decoration-underline">Title : </h4> {{ book.title }}
+                    <span class="border-top"></span>
+                </div>
+                <div class="row">
+                    <h4 class="text-decoration-underline">Subtitle : </h4> {{ book.subtitle }}
+                    <span class="border-top"></span>
+                </div>
+                <div class="row">
+                    <h4 class="text-decoration-underline">Author : </h4> {{ book.authors }}
+                    <span class="border-top"></span>
+                </div>
+                <div class="row">
+                    <h4 class="text-decoration-underline">Description : </h4> {{ book.description }}
+                    <span class="border-top"></span>
+                </div>
+                <div class="row">
+                    <form action="/status" method="post">
+                        <select class="form-select" name="statusList" aria-label="Book's Status">
+                            <option value="0" selected>Please pick a status for this book</option>
+                            <option value="1">Reading</option>
+                            <option value="2">Read</option>
+                            <option value="3">To Buy</option>
+                            <option value="4">To Read</option>
+                        </select>
+                        <input type="hidden" name="title" id="title" value="{{ book.title }}">
+                        <input type="hidden" name="subtitle" id="subtitle" value="{{ book.subtitle }}">
+                        <input type="hidden" name="author" id="author" value="{{ book.authors }}">
+                        <input type="hidden" name="description" id="description" value="{{ book.description }}">
+                        <button type="submit" class="btn btn-primary">Add Book to your Library</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

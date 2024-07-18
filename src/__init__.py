@@ -34,6 +34,7 @@ def create_app():
 
 def create_db(app):
     from account.models import User
+    from books.models import Book, Status
     with app.app_context():
         db.create_all()
-        print("Database created!")
+        print("Database updated!")
