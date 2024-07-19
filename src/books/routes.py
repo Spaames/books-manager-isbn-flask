@@ -12,8 +12,19 @@ API_KEY = dotenv_values(".env").get("API_KEY")
 @books_bp.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
-    books_list = Book.query.filter_by(user_id=current_user.id).all()
-    return render_template('home.html', user=current_user, books_list=books_list)
+    reading_list = Book.query.filter_by(user_id=current_user.id, status_id=1).all()
+    read_list = Book.query.filter_by(user_id=current_user.id, status_id=2).all()
+    to_buy_list = Book.query.filter_by(user_id=current_user.id, status_id=3).all()
+    to_read_list = Book.query.filter_by(user_id=current_user.id, status_id=4).all()
+    book_list = Book.query.filter_by(user_id=current_user.id).all()
+
+    return render_template('home.html',
+                           user=current_user,
+                           read_list=read_list,
+                           to_buy_list=to_buy_list,
+                           to_read_list=to_read_list,
+                           reading_list=reading_list,
+                           book_list=book_list)
 
 
 @books_bp.route('/search', methods=['GET', 'POST'])
@@ -44,7 +55,7 @@ def search():
     return render_template('search.html', user=current_user, book=new_book)
 
 
-@books_bp.route('/status', methods=['GET', 'POST'])
+@books_bp.route('/save_book', methods=['GET', 'POST'])
 def status():
     if request.method == 'POST':
         if request.form['statusList'] != 0:
@@ -64,3 +75,27 @@ def status():
         else:
             print("pas 0 svp")
     return redirect(url_for('books.search'))
+
+
+@books_bp.route('/book/<id_book>', methods=['GET', 'POST'])
+def book(id_book):
+    book_details = Book.query.filter_by(id=id_book).first()
+    return render_template('book.html', user=current_user, book=book_details)
+
+
+@books_bp.route('/delete_book/<id_book>', methods=['GET', 'POST'])
+def delete_book(id_book):
+    if request.method == 'POST':
+        db.session.delete(Book.query.filter_by(id=id_book).first())
+        db.session.commit()
+        return redirect(url_for('books.home'))
+
+
+@books_bp.route('/update_status', methods=["GET", "POST"])
+def update_status():
+    if request.method == "POST":
+        id_book = request.form["id"]
+        id_status = request.form["status"]
+        db.session.query(Book).filter_by(id=id_book).update({'status_id': id_status})
+        db.session.commit()
+        return redirect(url_for('books.home'))
