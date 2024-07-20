@@ -80,7 +80,7 @@ def status():
 @books_bp.route('/book/<id_book>', methods=['GET', 'POST'])
 def book(id_book):
     book_details = Book.query.filter_by(id=id_book).first()
-    return render_template('book.html', user=current_user, book=book_details)
+    return render_template('book.html', user=current_user, book=book_details, background_color="page_book")
 
 
 @books_bp.route('/delete_book/<id_book>', methods=['GET', 'POST'])

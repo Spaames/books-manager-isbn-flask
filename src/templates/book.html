@@ -1,59 +1,73 @@
 {% extends 'core.html' %} {% block title %} Book {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col book_title">
                 <h2>{{ book.title }}</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                Subtitle :
+        <div class="row mb-3">
+            <div class="col bold">
+                Sous-titre :
             </div>
             <div class="col">
                 {{ book.subtitle }}
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                Author :
+        <div class="row mb-3">
+            <div class="col bold">
+                Auteur :
             </div>
             <div class="col">
                 {{ book.authors }}
             </div>
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="row mb-1">
+            <div class="col bold">
                 Description :
             </div>
+        </div>
+        <div class="row">
             <div class="col">
                 {{ book.description }}
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                Status
+        <div class="row mb-3 mt-3">
+            <div class="col bold">
+                Status :
             </div>
             <div class="col">
-                {{ book.status_id }}
+                {% if book.status_id == 1 %}
+                    En cours de lecture
+                {% elif book.status_id == 2 %}
+                    Lu
+                {% elif book.status_id == 3 %}
+                    A se procurer
+                {% elif book.status_id == 4 %}
+                    A lire
+                {% endif %}
             </div>
         </div>
-        <div class="row">
+        <div class="container">
             <form action="/update_status" method="post">
-                <select class="form-select" name="status" aria-label="Book's Status">
-                    <option value="0" selected>Select a status to modify it</option>
-                    <option value="1">Reading</option>
-                    <option value="2">Read</option>
-                    <option value="3">To Buy</option>
-                    <option value="4">To Read</option>
-                </select>
-                <input type="hidden" name="id" id="id" value="{{ book.id }}">
-                <button type="submit" class="btn btn-primary">Add Book to your Library</button>
+                <div class="row mb-4">
+                    <select class="form-select" name="status" aria-label="Book's Status">
+                        <option value="0" selected>---Status---</option>
+                        <option value="1">En cours de lecture</option>
+                        <option value="2">Lu</option>
+                        <option value="3">A se procurer</option>
+                        <option value="4">A lire</option>
+                    </select>
+                </div>
+                <div class="row mb-4">
+                    <input type="hidden" name="id" id="id" value="{{ book.id }}">
+                    <button type="submit" class="btn btn-secondary">Sauvegarder le status</button>
+                </div>
             </form>
-        </div>
-        <div class="row">
             <form action="/delete_book/{{ book.id }}" method="post">
-                <button type="submit" class="btn btn-secondary">Delete this book</button>
+                <div class="row mb-3">
+                    <button type="submit" class="btn btn-danger">Supprimer de ma bibliothèque</button>
+                </div>
             </form>
         </div>
     </div>
