@@ -52,7 +52,7 @@ def search():
                         status_id=0,
                         user_id=current_user.id)
 
-    return render_template('search.html', user=current_user, book=new_book)
+    return render_template('search.html', user=current_user, book=new_book, background_color="page_book")
 
 
 @books_bp.route('/save_book', methods=['GET', 'POST'])

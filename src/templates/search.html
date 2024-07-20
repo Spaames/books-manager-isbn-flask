@@ -1,49 +1,67 @@
 {% extends 'core.html' %} {% block title %} Library {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row mt-3">
             <form method="post">
-                <div class="mb-3">
-                    <label for="isbnInput" class="form-label">ISBN Code : </label>
-                    <input type="text" class="form-control" id="isbnInput" name="isbnInput" aria-describedby="isbnInfo">
-                    <div id="isbnInput" class="form-text">The ISBN Code is behind the books, with 10 or 13 characters</div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                <div class="col mb-3">
+                    <label for="isbnInput" class="form-label bold">Code ISBN : </label>
+                    <input type="text" class="form-control" id="isbnInput" name="isbnInput" autocomplete="off" aria-describedby="isbnInfo">
+                    <div id="isbnInput" class="form-text mb-3">Le code ISBN, constitué de 10 ou 13 chiffres, se situe au niveau du code barre</div>
+                    <button type="submit" class="btn btn-secondary">Chercher le livre</button>
                 </div>
             </form>
         </div>
         {% if book != "" %}
             <div class="container">
-                <div class="row">
-                    <h4 class="text-decoration-underline">Title : </h4> {{ book.title }}
-                    <span class="border-top"></span>
+                <div class="row mt-5">
+                    <div class="col book_title">
+                        <h2>{{ book.title }}</h2>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col bold">
+                        Sous-titre :
+                    </div>
+                    <div class="col">
+                        {{ book.subtitle }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col bold">
+                        Auteur :
+                    </div>
+                    <div class="col">
+                        {{ book.authors }}
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col bold">
+                        Description :
+                    </div>
                 </div>
                 <div class="row">
-                    <h4 class="text-decoration-underline">Subtitle : </h4> {{ book.subtitle }}
-                    <span class="border-top"></span>
+                    <div class="col">
+                        {{ book.description }}
+                    </div>
                 </div>
-                <div class="row">
-                    <h4 class="text-decoration-underline">Author : </h4> {{ book.authors }}
-                    <span class="border-top"></span>
-                </div>
-                <div class="row">
-                    <h4 class="text-decoration-underline">Description : </h4> {{ book.description }}
-                    <span class="border-top"></span>
-                </div>
-                <div class="row">
-                    <form action="/save_book" method="post">
-                        <select class="form-select" name="statusList" aria-label="Book's Status">
-                            <option value="0" selected>Please pick a status for this book</option>
-                            <option value="1">Reading</option>
-                            <option value="2">Read</option>
-                            <option value="3">To Buy</option>
-                            <option value="4">To Read</option>
-                        </select>
-                        <input type="hidden" name="title" id="title" value="{{ book.title }}">
-                        <input type="hidden" name="subtitle" id="subtitle" value="{{ book.subtitle }}">
-                        <input type="hidden" name="author" id="author" value="{{ book.authors }}">
-                        <input type="hidden" name="description" id="description" value="{{ book.description }}">
-                        <button type="submit" class="btn btn-primary">Add Book to your Library</button>
-                    </form>
+                <div class="row mb-3 mt-3">
+                    <div class="container">
+                        <form action="/update_status" method="post">
+                            <div class="row mb-4">
+                                <select class="form-select" name="status" aria-label="Book's Status">
+                                    <option value="0" selected>Merci de choisir un statut</option>
+                                    <option value="1">En cours de lecture</option>
+                                    <option value="2">Lu</option>
+                                    <option value="3">A se procurer</option>
+                                    <option value="4">A lire</option>
+                                </select>
+                            </div>
+                            <div class="row mb-4">
+                                <input type="hidden" name="id" id="id" value="{{ book.id }}">
+                                <button type="submit" class="btn btn-success">Ajouter le livre dans la bibliothèque</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         {% endif %}
