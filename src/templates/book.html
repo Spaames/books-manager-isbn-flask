@@ -34,7 +34,7 @@
         </div>
         <div class="row mb-3 mt-3">
             <div class="col bold">
-                Status :
+                Statut :
             </div>
             <div class="col">
                 {% if book.status_id == 1 %}
@@ -52,7 +52,7 @@
             <form action="/update_status" method="post">
                 <div class="row mb-4">
                     <select class="form-select" name="status" aria-label="Book's Status">
-                        <option value="0" selected>---Status---</option>
+                        <option value="0" selected>---Modifier le statut---</option>
                         <option value="1">En cours de lecture</option>
                         <option value="2">Lu</option>
                         <option value="3">A se procurer</option>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="row mb-4">
                     <input type="hidden" name="id" id="id" value="{{ book.id }}">
-                    <button type="submit" class="btn btn-secondary">Sauvegarder le status</button>
+                    <button type="submit" class="btn btn-secondary">Sauvegarder le statut</button>
                 </div>
             </form>
             <form action="/delete_book/{{ book.id }}" method="post">

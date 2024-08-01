@@ -24,7 +24,8 @@ def home():
                            to_buy_list=to_buy_list,
                            to_read_list=to_read_list,
                            reading_list=reading_list,
-                           book_list=book_list)
+                           book_list=book_list,
+                           background_color="page_book")
 
 
 @books_bp.route('/search', methods=['GET', 'POST'])

@@ -28,3 +28,14 @@
 .page_book {
     background-color: #fff2e6;
 }
+
+.custom-accordion .accordion-button {
+    background-color: #fff2e6;
+    color: black;
+}
+.custom-accordion .accordion-button.collapsed {
+    background-color: #fff2e6;
+}
+.custom-accordion .accordion-body {
+    background-color: #fff2e6;
+}
