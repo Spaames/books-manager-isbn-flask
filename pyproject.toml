@@ -4,6 +4,11 @@ version = "0.1.0"
 description = "python application to manage personnal book libraries"
 authors = ["Rémi DUPUY <dupuyremi@outlook.com>"]
 readme = "README.md"
+packages = [
+    { include = "src" },
+    { include = "books", from = "src"},
+    { include = "account", from = "src"},
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
