@@ -37,4 +37,7 @@ def create_db(app):
     from books.models import Book, Status
     with app.app_context():
         db.create_all()
+        new_user = User(username="test", password="1234")
+        db.session.add(new_user)
+        db.session.commit()
         print("Database updated!")
