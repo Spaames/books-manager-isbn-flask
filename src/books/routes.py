@@ -9,7 +9,7 @@ books_bp = Blueprint('books', __name__)
 API_KEY = dotenv_values(".env").get("API_KEY")
 
 
-@books_bp.route('/home', methods=['GET', 'POST'])
+@books_bp.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
     reading_list = Book.query.filter_by(user_id=current_user.id, status_id=1).all()
@@ -52,6 +52,8 @@ def search():
                         description=description,
                         status_id=0,
                         user_id=current_user.id)
+        db.session.add(new_book)
+        db.session.commit()
 
     return render_template('search.html', user=current_user, book=new_book, background_color="page_book")
 
