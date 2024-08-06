@@ -17,6 +17,7 @@ def home():
     to_buy_list = Book.query.filter_by(user_id=current_user.id, status_id=3).all()
     to_read_list = Book.query.filter_by(user_id=current_user.id, status_id=4).all()
     book_list = Book.query.filter_by(user_id=current_user.id).all()
+    gave_up_list = Book.query.filter_by(user_id=current_user.id, status_id=5).all()
 
     return render_template('home.html',
                            user=current_user,
@@ -25,6 +26,7 @@ def home():
                            to_read_list=to_read_list,
                            reading_list=reading_list,
                            book_list=book_list,
+                           gave_up_list=gave_up_list,
                            background_color="page_book")
 
 

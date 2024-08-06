@@ -2,12 +2,13 @@
 
 ## A faire : 
 
-- [ ] Ajouter un statut "Abandonné"
+- [X] Ajouter un statut "Abandonné"
 - [ ] Ajouter la possibilité de créer un compte
 - [ ] Chiffrer les mdp pour qu'ils ne soient pas en dur dans la BDD
 - [ ] Ajouter la possibilité de noter (/5) les livres
 - [ ] Corriger ou supprimer les alertes (besoin de se log, livre bien ajouté etc)
 - [ ] Faire le README
+- [ ] Option de recherche par nom du livre, notamment pour la liste d'achat
 
 
 

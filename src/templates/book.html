@@ -45,6 +45,8 @@
                     A se procurer
                 {% elif book.status_id == 4 %}
                     A lire
+                {% elif book.status_id == 5 %}
+                    Abandonné
                 {% endif %}
             </div>
         </div>
@@ -57,6 +59,7 @@
                         <option value="2">Lu</option>
                         <option value="3">A se procurer</option>
                         <option value="4">A lire</option>
+                        <option value="5">Abandonné</option>
                     </select>
                 </div>
                 <div class="row mb-4">
