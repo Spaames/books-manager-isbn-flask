@@ -1,4 +1,4 @@
-{% extends 'core.html' %} {% block title %} Login {% endblock %}
+{% extends 'core.html' %} {% block title %} S'enregister {% endblock %}
 {% block content %}
     <section class="vh-100">
         <div class="container py-5 h-100">
@@ -11,18 +11,21 @@
 
                             <form method="POST">
                                 <div data-mdb-input-init class="form-outline mb-4">
-                                    <label class="form-label" for="username">Username</label>
+                                    <label class="form-label" for="username">Nom d'utilisateur</label>
                                     <input type="text" name="username" id="username" class="form-control form-control-lg" />
                                 </div>
                                 <div data-mdb-input-init class="form-outline mb-4">
-                                    <label class="form-label" for="password">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                                    <label class="form-label" for="password1">Mot de Passe</label>
+                                    <input type="password" name="password1" id="password1" class="form-control form-control-lg" />
                                 </div>
-                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-login btn-lg btn-block" type="submit">Login</button>
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="password2">Confirmation du Mot de Passe</label>
+                                    <input type="password" name="password2" id="password2" class="form-control form-control-lg" />
+                                </div>
+                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-login btn-lg btn-block" type="submit">Créer un compte</button>
                             </form>
-
                             <div>
-                                <p class="mb-0">Don't have an account? <a href="/sign_up" class="text-black-50 fw-bold">Sign Up</a>
+                                <p class="mb-0">Si vous avez un compte : <a href="/sign_up" class="text-black-50 fw-bold">Se Connecter</a>
                                 </p>
                             </div>
                         </div>
