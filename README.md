@@ -9,8 +9,9 @@
 - [ ] Corriger ou supprimer les alertes (besoin de se log, livre bien ajouté etc)
 - [ ] Faire le README
 - [ ] Option de recherche par nom du livre, notamment pour la liste d'achat
-
-
+- [ ] Corriger les langues
+- [ ] Rediriger la création dans la librairie
+- [ ] Ajouter des petits logos
 
 
 
