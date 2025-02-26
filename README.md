@@ -1,3 +1,9 @@
+
+# --- ABANDONNED ---
+Not enough books data on free API for optimal use.
+Will maybe develop an other app which will create books but damn, using ISBN number was so nice
+
+
 # Panthota
 
 ## A faire : 
